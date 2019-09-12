@@ -7,6 +7,9 @@
 
 # Bonus Challenge: Is it possible to find the max and min in a single traversal?
 
+def msg():
+    return "Please pass a list of ints with the size of at least 1"
+
 def get_min_max(ints):
     """
     Return a tuple(min, max) out of list of unsorted integers.
@@ -14,10 +17,16 @@ def get_min_max(ints):
     Args:
        ints(list): list of integers containing one or more integers
     """
+    if len(ints) < 1:
+        return msg()
+
     min = None
     max = None
 
     for i in ints:
+        if type(i) is not int:
+            return msg()
+
         if min is None or i < min:
             min = i
         if max is None or i > max:
@@ -31,8 +40,38 @@ def get_min_max(ints):
 ## Example Test Case of Ten Integers
 import random
 
-l = [i for i in range(0, 10)]  # a list containing 0 - 9
-random.shuffle(l)
+li= [i for i in range(0, 10)]  # a list containing 0 - 9
+random.shuffle(li)
 
-print ("Pass" if ((0, 9) == get_min_max(l)) else "Fail")
-# Sorting usually requires O(n log n) time Can you come up with a O(n) algorithm (i.e., linear time)?
+print (get_min_max(li))
+# (0, 9)
+
+li= [i for i in range(0, 100)]  # a list containing 0 - 9
+random.shuffle(li)
+
+print (get_min_max(li))
+# (0, 99)
+
+li= [i for i in range(-50, 50)]  # a list containing 0 - 9
+random.shuffle(li)
+
+print (get_min_max(li))
+# (-50, 49)
+
+li= [i for i in range(-99, 0)]  # a list containing 0 - 9
+random.shuffle(li)
+
+print (get_min_max(li))
+# (-99, -1)
+
+# Edge Case: just one element (should work)
+print (get_min_max([1]))
+# (1, 1)
+
+# Edge Case: empty list
+print (get_min_max([]))
+# Please pass a list of ints with the size of at least 1
+
+# Edge Case: non ints
+print (get_min_max([1,2,3,4, "seventeen"]))
+# Please pass a list of ints with the size of at least 1
