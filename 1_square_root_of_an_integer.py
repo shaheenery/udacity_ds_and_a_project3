@@ -9,6 +9,9 @@
 
 # The expected time complexity is O(log(n))
 
+def msg():
+  return "Please enter a positive integer"
+
 def sqrt(number):
     """
     Calculate the floored square root of a number
@@ -18,6 +21,15 @@ def sqrt(number):
     Returns:
        int: Floored Square Root
     """
+
+    try:
+      number = int(number)
+    except Exception as e:
+      return msg()
+
+    if number < 0:
+      return msg()
+
     return _sqrt(number, 0, number)
 
 def _sqrt(n, low, high):
@@ -35,9 +47,31 @@ def _sqrt(n, low, high):
   else:
     return mid
 
-print ("Pass" if  (3 == sqrt(9)) else "Fail")
-print ("Pass" if  (0 == sqrt(0)) else "Fail")
-print ("Pass" if  (4 == sqrt(16)) else "Fail")
-print ("Pass" if  (1 == sqrt(1)) else "Fail")
-print ("Pass" if  (5 == sqrt(27)) else "Fail")
-print ("Pass" if  (1000 == sqrt(1000112)) else "Fail")
+print (sqrt(9))
+# 3
+print (sqrt(0))
+# 0
+print (sqrt(16))
+# 4
+print (sqrt(1))
+# 1
+print (sqrt(27))
+# 5
+print (sqrt(1000112))
+# 1000
+
+# Edge case: string with valid integer
+print (sqrt("27"))
+# 5
+
+# Edge case: string with decimal
+print (sqrt("27.2"))
+# Please enter a valid integer
+
+# Edge case: string
+print (sqrt("one"))
+# Please enter a valid integer
+
+# Edge case: negative integer
+print (sqrt(-42))
+# Please enter a valid integer
