@@ -13,6 +13,9 @@
 
 # Input: nums = [4,5,6,7,0,1,2], target = 0, Output: 4
 
+def msg():
+    return "Invalid Input! how to use: rotated_array_search(int[], int)"
+
 def rotated_array_search(input_list, number):
     """
     Find the index by searching in a rotated sorted array
@@ -22,6 +25,9 @@ def rotated_array_search(input_list, number):
     Returns:
        int: Index or -1
     """
+    if input_list is None or number is None:
+        return msg()
+
     return _ra_search(input_list, number, 0, len(input_list) - 1)
 
 def _ra_search(arr, num, low, high):
@@ -65,3 +71,15 @@ test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 8])
 test_function([[6, 7, 8, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+
+# Edge case: pass none for arg1
+print (rotated_array_search(None,17))
+# Invalid Input! how to use: rotated_array_search(int[], int)
+
+# Edge case: pass none for arg2
+print (rotated_array_search([1,2,3],None))
+# Invalid Input! how to use: rotated_array_search(int[], int)
+
+# Edge case: empty array for arg1
+print (rotated_array_search([], 3))
+# -1
