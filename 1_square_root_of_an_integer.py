@@ -66,12 +66,12 @@ print (sqrt("27"))
 
 # Edge case: string with decimal
 print (sqrt("27.2"))
-# Please enter a valid integer
+# Please enter a positive integer
 
 # Edge case: string
 print (sqrt("one"))
-# Please enter a valid integer
+# Please enter a positive integer
 
 # Edge case: negative integer
 print (sqrt(-42))
-# Please enter a valid integer
+# Please enter a positive integer
