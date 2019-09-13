@@ -7,6 +7,7 @@
 #### Complexity
 
 Time: O(log(n))
+
 Space: O(1)
 
 #### Analysis
@@ -20,6 +21,7 @@ The time complexity of my algorithm is O(log(n)) where n the value of the intege
 #### Complexity
 
 Time: O(log(n))
+
 Space: O(n)
 
 #### Analysis
@@ -35,6 +37,7 @@ The space complexity is O(n) because the memory needs would increase linearly wi
 #### Complexity
 
 Time: O(n log(n))
+
 Space: O(n)
 
 #### Analysis
@@ -50,6 +53,7 @@ The space complexity is O(n) where n is the size of the input array, as is expec
 #### Complexity
 
 Time: O(n)
+
 Space: O(n)
 
 #### Analysis
