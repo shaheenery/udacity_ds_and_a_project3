@@ -28,6 +28,8 @@ The time complexity of my algorithm is O(log(n)) where n is the size of the arra
 
 The space complexity is O(n) because the memory needs would increase linearly with the size of n.  I do not create any subarray as is common with a merge sort.  Instead I only store integers for the indexes of my ever narrowing search parameters
 
+------
+
 ### Problem 3 - Rearrange Array Elements
 
 #### Complexity
@@ -41,6 +43,8 @@ The time complexity for this problem is O(n log(n)) and the requirements dictate
 
 The space complexity is O(n) where n is the size of the input array, as is expected with a merge sort implementation.
 
+------
+
 ### Problem 4 - Dutch National Flag
 
 #### Complexity
@@ -53,4 +57,6 @@ Space: O(n)
 The time complexity for my algorithm is O(n) because there is a constant number of steps for each element in the input array, the size of the array being n.  Since we only have 3 possible values, we can use the middle value, 1, as a base case, and in-place swap the higher and lower values to their proper relative position.
 
 The space complexity is also O(n).  Besides the input array,  I only store a constant number of integers for indexes. I perform an in-place swap in the original array instead of creating and filling a new one. I store the index of the value I am currently visiting, where the next "0" should be stored and where the next "2" should be stored, leaving the ones happily nested in the middle where they belong.
+
+------
 
