@@ -42,7 +42,7 @@ Space: O(n)
 
 #### Analysis
 
-The time complexity for this problem is O(n log(n)) and the requirements dictate.  I decided to use a merge sort, albeit reversed (high to low).  A mergesort has that time complexity in the best, average, and worst cases.  Once a sorted list is obtained, the rest of my steps to divide the integers in to two arrays and then join them as characters before a final conversion to integers takes a comparatively inconsequencial amount of time on the order of O(n).
+The time complexity for this problem is O(n log(n)) as the requirements dictate.  I decided to use a merge sort, albeit reversed (high to low).  A mergesort has that time complexity in the best, average, and worst cases.  Once a sorted list is obtained I  divide the integers in to two arrays and then join them as characters before a final conversion to integers.  These find steps takes a comparatively inconsequencial amount of time on the order of O(n).
 
 The space complexity is O(n) where n is the size of the input array, as is expected with a merge sort implementation.
 
