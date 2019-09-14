@@ -60,6 +60,9 @@ class Router:
         # Add a handler for a path
         # You will need to split the path and pass the pass parts
         # as a list to the RouteTrie
+        if handler is None or path is None:
+            return "Please add handler in the form 'add_handler(path, handler)'"
+
         path_arr = self.split_path(path)
         self.trie.insert(path_arr, handler)
 
@@ -69,7 +72,7 @@ class Router:
         # return the "not found" handler if you added one
         # bonus points if a path works with and without a trailing slash
         # e.g. /about and /about/ both return the /about handler
-        if path == "/":
+        if path == "/" or path == "":
             return self.trie.root.handler
 
         path_arr = self.split_path(path)
@@ -106,4 +109,16 @@ print(router.lookup("/")) # should print 'root handler'
 print(router.lookup("/home")) # should print 'not found handler' or None if you did not implement one
 print(router.lookup("/home/about")) # should print 'about handler'
 print(router.lookup("/home/about/")) # should print 'about handler' or None if you did not handle trailing slashes
+
 print(router.lookup("/home/about/me")) # should print 'not found handler' or None if you did not implement one
+
+# Edge Case - Empty path
+print(router.lookup("")) # should print 'root handler'
+
+# Edge Case - No handler
+print(router.add_handler("/home/account/", None))
+# Please add handler in the form 'add_handler(path, handler)'
+
+# Edge Case - No path
+print(router.add_handler(None, "account handler"))
+# Please add handler in the form 'add_handler(path, handler)'
