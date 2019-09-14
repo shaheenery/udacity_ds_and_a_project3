@@ -64,3 +64,51 @@ The space complexity is also O(n).  Besides the input array,  I only store a con
 
 ------
 
+### Problem 5 - Autocomplete with Tries
+
+#### Complexity
+
+Time:
+
+| Method        |                                                              |
+| :------------ | ------------------------------------------------------------ |
+| `Trie#find`   | O(n) where *n* is the sum of the lengths of inserted words that match a given prefix |
+| `Trie#insert` | O(n) where *n* is the length of the word to insert           |
+
+ Space: O(n) where n is the sum of the lengths of all inserted words
+
+#### Analysis
+
+The trie data structure allows operations to be completed in O(n) time since the head of  all subsequences of a particular prefix are stored together.  The time it takes for a *find* will grow as the length of the input word increases.  The underlying storage for the *next letter in a sequence* is a dictionary, so each individual lookup is cheap O(1).
+
+The space complexity of the trie implementation is O(n) because we only need to store one letter per node in the worst case, and in the best case where all but one of two words overlap e.g. (rocket, rockets), all but one of the nodes can be reused.
+
+------
+
+### Problem 6 - Unsorted Integer Array
+
+#### Complexity
+
+Time: O(n)
+
+Space: O(n)
+
+#### Analysis
+
+The time and space complexity of my algorithm are both O(n) where *n* is the size of the array.  I only use two variables for storing the `min` and `max` which takes constant space regardless of the input.  Since only one traversal is needed, the time needed will grow linearly with the length of the input.
+
+------
+
+### Problem 7 - Request Routing in a Web Server with a Trie
+
+#### Complexity
+
+Time: O(n)
+
+Space: O(n)
+
+#### Analysis
+
+This problem is equivalent in complexity and space to [problem 5.](#problem-5-autocomplete-with-tries) Instead of iterating through characters of a word we are iterating through segments of a URI path.  When two paths only differ by one final additional segment, all other nodes are shared between them.  When there is no overlap between two paths the space complexity is the (still linear) O(n + m).
+
+There are additional checks for root path but that does not increase the complexity.  Splitting the path into segments by using `String#split` also has complexity of O(n) which is the same as complexity needed to do the additions and lookups.
