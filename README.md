@@ -109,6 +109,6 @@ Space: O(n)
 
 #### Analysis
 
-This problem is equivalent in complexity and space to [problem 5.](#problem-5-autocomplete-with-tries) Instead of iterating through characters of a word we are iterating through segments of a URI path.  When two paths only differ by one final additional segment, all other nodes are shared between them.  When there is no overlap between two paths the space complexity is the (still linear) O(n + m).
+This problem is equivalent in complexity and space to [problem 5.](#problem-5---autocomplete-with-tries) Instead of iterating through characters of a word we are iterating through segments of a URI path.  When two paths only differ by one final additional segment, all other nodes are shared between them.  When there is no overlap between two paths the space complexity is the (still linear) O(n + m).
 
 There are additional checks for root path but that does not increase the complexity.  Splitting the path into segments by using `String#split` also has complexity of O(n) which is the same as complexity needed to do the additions and lookups.
