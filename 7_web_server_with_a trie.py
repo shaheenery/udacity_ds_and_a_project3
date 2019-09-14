@@ -87,9 +87,6 @@ class Router:
         # you need to split the path into parts for
         # both the add_handler and loopup functions,
         # so it should be placed in a function here
-        if path[0] == "/":
-            path = path[1:]
-
         split = path.split("/")
         sane = []
         for part in split:
@@ -98,22 +95,28 @@ class Router:
 
         return sane
 
-# Here are some test cases and expected outputs you can use to test your implementation
-
 # create the router and add a route
-router = Router("root handler", "not found handler") # remove the 'not found handler' if you did not implement this
+router = Router("root handler", "not found handler")
 router.add_handler("/home/about", "about handler")  # add a route
 
-# # some lookups with the expected output
-print(router.lookup("/")) # should print 'root handler'
-print(router.lookup("/home")) # should print 'not found handler' or None if you did not implement one
-print(router.lookup("/home/about")) # should print 'about handler'
-print(router.lookup("/home/about/")) # should print 'about handler' or None if you did not handle trailing slashes
+print(router.lookup("/"))
+# root handler
 
-print(router.lookup("/home/about/me")) # should print 'not found handler' or None if you did not implement one
+print(router.lookup("/home"))
+# not found handler
 
-# Edge Case - Empty path
-print(router.lookup("")) # should print 'root handler'
+print(router.lookup("/home/about"))
+# about handler
+
+print(router.lookup("/home/about/"))
+# about handler
+
+print(router.lookup("/home/about/me"))
+# not found handler
+
+# Edge Case - Empty path e.g. example.com
+print(router.lookup(""))
+# root handler
 
 # Edge Case - No handler
 print(router.add_handler("/home/account/", None))
