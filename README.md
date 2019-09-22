@@ -6,13 +6,15 @@
 
 #### Complexity
 
-Time: O(log(n))
+Time: **Iterative & Recursive:** O(log(n))
 
-Space: O(1)
+Space: **Iterative:** O(1), **Resursive:** O(log(n))
 
 #### Analysis
 
 The time complexity of my algorithm is O(log(n)) where n the value of the integer being passed in. I use a recursive divide and conquer function which tests on each subsequent call, whether a number squared is higher or lower than our target.  In this way, we eliminate half of the remaining possibilities each pass.  The space complexity is constant, O(1) because regardless of the increase in n, the value of the integer being passed in, we will use the same amount of variables.
+
+Considering the extra space recquired, I would no longer favor a recursive approach to my algorithm.  With each recursive call a new frame would be pushed to the stack each of the log(n) times the function is called.  It would be possible to write this function in a language that provided tail call optimization, such as Elixir, which would not use extra memory for reach recursion.
 
 ------
 

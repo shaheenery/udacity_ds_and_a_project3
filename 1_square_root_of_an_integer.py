@@ -12,7 +12,7 @@
 def msg():
   return "Please enter a positive integer"
 
-def sqrt(number):
+def sqrt(n):
     """
     Calculate the floored square root of a number
 
@@ -23,29 +23,52 @@ def sqrt(number):
     """
 
     try:
-      number = int(number)
+      n = int(n)
     except Exception as e:
       return msg()
 
-    if number < 0:
+    if n < 0:
       return msg()
 
-    return _sqrt(number, 0, number)
 
-def _sqrt(n, low, high):
-  if high * high == n:
-    return high
+    low = 0
+    high = n
 
-  if high - low == 1:
-    return low
+    while True:
+      if high * high == n:
+        return high
 
-  mid = (low + high) // 2
-  if mid * mid > n:
-    return _sqrt(n, low, mid)
-  elif mid * mid < n:
-    return _sqrt(n, mid, high)
-  else:
-    return mid
+      if high - low == 1:
+        return low
+
+      mid = (low + high) // 2
+
+      if mid * mid > n:
+        low, high = low, mid
+      elif mid * mid < n:
+        low, high = mid, high
+      else:
+        return mid
+
+
+
+
+#     return _sqrt(n, 0, n)
+
+# def _sqrt(n, low, high):
+#   if high * high == n:
+#     return high
+
+#   if high - low == 1:
+#     return low
+
+#   mid = (low + high) // 2
+#   if mid * mid > n:
+#     return _sqrt(n, low, mid)
+#   elif mid * mid < n:
+#     return _sqrt(n, mid, high)
+#   else:
+#     return mid
 
 print (sqrt(9))
 # 3
