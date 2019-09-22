@@ -30,7 +30,9 @@ Space: O(n)
 
 The time complexity of my algorithm is O(log(n)) where n is the size of the array being passed in.  Unlike a typical sorted array where you can divide and conquer based on the midpoint, I chose to divide on the pivot point, i.e. the first element in the array.  The average complexity is O(log(n)) and I believe the worst complexity, where the location of the leaves the most extreme ratio between the size of the higher and lower subsequences, the complexity will work out to O(log(n + x)) where n is the size of the array passed in and x is the difference between n and the size of an unrotated array that would result in the same number of possiblities after the first pass.  This would simplify to O(log(n)).
 
-The space complexity is O(n) because the memory needs would increase linearly with the size of n.  I do not create any subarray as is common with a merge sort.  Instead I only store integers for the indexes of my ever narrowing search parameters
+The space complexity is O(n) because the memory needs would increase linearly with the size of n.  I do not create any subarray as is common with a merge sort.  Instead I only store integers for the indexes of my ever narrowing search parameters.
+
+*Note: Since this is a recursive solution there will be a linear increase in the stack size as well, but it won't change the overall complexity* 
 
 ------
 
@@ -46,7 +48,7 @@ Space: O(n)
 
 The time complexity for this problem is O(n log(n)) as the requirements dictate.  I decided to use a merge sort, albeit reversed (high to low).  A mergesort has that time complexity in the best, average, and worst cases.  Once a sorted list is obtained I  divide the integers in to two arrays and then join them as characters before a final conversion to integers.  These find steps takes a comparatively inconsequencial amount of time on the order of O(n).
 
-The space complexity is O(n) where n is the size of the input array, as is expected with a merge sort implementation.
+The space complexity is O(n) where n is the size of the input array, as is expected with a merge sort implementation.  In the `rearrange_digits` method I store two temporary arrays `one` and `two` which when combined use the same space as n.  A complexity of O(2n) simplifies to O(n)
 
 ------
 
@@ -70,14 +72,19 @@ The space complexity is also O(n).  Besides the input array,  I only store a con
 
 #### Complexity
 
-Time:
+##### Time:
 
-| Method        |                                                              |
-| :------------ | ------------------------------------------------------------ |
-| `Trie#find`   | O(n) where *n* is the sum of the lengths of inserted words that match a given prefix |
-| `Trie#insert` | O(n) where *n* is the length of the word to insert           |
+| Method                        |                                                              |
+| :---------------------------- | ------------------------------------------------------------ |
+| `Trie#find` and `Trie#insert` | O(n) where *n* is the length of the word to insert or find   |
+| `Trie#suffixes`               | O(n) where *n* is the sum of the lengths of inserted words that match a given prefix |
 
- Space: O(n) where n is the sum of the lengths of all inserted words
+#####  Space:
+
+| Method          |                                                              |
+| :-------------- | ------------------------------------------------------------ |
+| `Trie#insert`   | O(n) where *n* is the length of the word to insert or find   |
+| `Trie#suffixes` | O(n) where *n* is the sum of the lengths of inserted words that match a given prefix |
 
 #### Analysis
 
@@ -105,12 +112,24 @@ The time and space complexity of my algorithm are both O(n) where *n* is the siz
 
 #### Complexity
 
-Time: O(n)
+##### Time: 
 
-Space: O(n)
+| Method               |                                                              |
+| :------------------- | ------------------------------------------------------------ |
+| `Router#add_handler` | O(n) where *n* is the number of path segments in the path to be added |
+| `Router#lookup`      | O(n) where *n* is the number of path segments in the path to be found |
+
+##### Space: 
+
+| Method               |                                                              |
+| :------------------- | ------------------------------------------------------------ |
+| `Router#add_handler` | O(n) where *n* is the number of path segments in the path to be added.  In the worst case, one new node will be added for each path segment |
+| `Router#lookup`      | O(n) where *n* is the number of path segments in the path to be found because an array will be created from the path by the `split_path`method |
+
+
 
 #### Analysis
 
-This problem is equivalent in complexity and space to [problem 5.](#problem-5---autocomplete-with-tries) Instead of iterating through characters of a word we are iterating through segments of a URI path.  When two paths only differ by one final additional segment, all other nodes are shared between them.  When there is no overlap between two paths the space complexity is the (still linear) O(n + m).
+This problem is equivalent in complexity and space to [problem 5.](#problem-5---autocomplete-with-tries) Instead of iterating through characters of a word we are iterating through segments of a URI path.  When two paths only differ by one final additional segment, all other nodes are shared between them.  When there is no overlap between two paths the space complexity is the (still linear) O(n + m) where n is the number of segments in one path, and m is the number of segments in the other, non-overlapping path.
 
 There are additional checks for root path but that does not increase the complexity.  Splitting the path into segments by using `String#split` also has complexity of O(n) which is the same as complexity needed to do the additions and lookups.
